@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    macos:
+      xcode: "10.2.0"
+    steps:
+      - checkout
+      - run:
+          command: |
+            git clone https://github.com/simonbray/staged-recipes.git
+            cp build.sh staged-recipes/recipes/ambertools
+            cp meta.yaml staged-recipes/recipes/ambertools
+            ./staged-recipes/.circleci/run_docker_build.sh
